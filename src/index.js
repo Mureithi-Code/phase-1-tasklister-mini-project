@@ -10,18 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
  taskForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  const color = document.getElementById("select-colour").value;
   const taskDescription = document.getElementById("new-task-description").value;
   if (taskDescription.trim() !== ""){
-    addTaskToList(taskDescription);
+    addTaskToList(taskDescription, color);
     taskForm.reset();
   }
  });
 });
 
-function addTaskToList(task) {
+function addTaskToList(task, color) {
   const taskList = document.getElementById("tasks");
   const newTask = document.createElement("li");
   newTask.textContent = task;
+  newTask.style.color = color;
 
   const deleteButton = document.createElement("button")
   deleteButton.textContent = "Delete";
@@ -30,6 +32,6 @@ function addTaskToList(task) {
   });
 
   newTask.appendChild(deleteButton);
-  taskList.appendChild(newTask);
+  taskList.appendChild(newTask,);
 }
 
